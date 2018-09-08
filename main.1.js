@@ -6,7 +6,7 @@ function drawSplatters() {
     ctx.clearRect(0, 0, sourceCanvas.width, sourceCanvas.height);
 
     for(let y = 64; y < 1024; y+= 128){
-        frames = generateAnimatedBlobControlPoints(48,0.5,30,8)
+        frames = generateAnimatedBlobControlPoints(32,0.5,30,8)
 
         frames.forEach( (controlPoints, n) =>{
             drawSplatterWithControlPoints(64 + n * 128, y, 56, controlPoints);
@@ -49,7 +49,7 @@ function generateAnimatedBlobControlPoints(startRadius, noiseMagnitude, vertexCo
 
     // create an array of factors to grow/shrink the vertex point (radius) each frame
     let scaleFactors = Array(vertexCount).fill(undefined)
-        .map(() => Math.getRandomArbitrary(-noiseMagnitude, noiseMagnitude) / framesCount) 
+        .map(() => Math.getRandomArbitrary(-noiseMagnitude*0.2, noiseMagnitude) / framesCount) 
 
     // now create an array of frames, where the first frame has uniform radii, but each subsequent frame's radii are increasingly distorted
     let interpolatedRadii = Array(framesCount).fill(scaleFactors)
