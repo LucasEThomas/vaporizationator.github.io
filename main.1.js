@@ -6,7 +6,7 @@ function drawSplatters() {
     ctx.clearRect(0, 0, sourceCanvas.width, sourceCanvas.height);
 
     for(let y = 64; y < 1024; y+= 128){
-        frames = generateAnimatedBlobControlPoints(32,0.5,30,8)
+        frames = generateAnimatedBlobControlPoints(32,0.8,30,8)
 
         frames.forEach( (controlPoints, n) =>{
             drawSplatterWithControlPoints(64 + n * 128, y, 56, controlPoints);
